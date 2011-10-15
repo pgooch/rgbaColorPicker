@@ -7,7 +7,6 @@ To use the rgbaColor Picker you'll need to include a version of jQuery (tested w
 The script will output colors in the following order; Name, Hex, rgba.
 
 ### Example
-You can see the script in action at the following links
 - General Example, v0.9 <http://fatfolderdesign.com/ex/rgbaColorPicker/>
 - Stress Test, v0.9 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
