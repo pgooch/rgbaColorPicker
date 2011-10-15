@@ -8,8 +8,8 @@ The script will output colors in the following order; Name, Hex, rgba.
 
 ### Example
 You can see the script in action at the following links
-- <http://fatfolderdesign.com/ex/rgbaColorPicker/> - General Example, v0.9
-- <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html> - Stress Test, v0.9
+- General Example, v0.9 <http://fatfolderdesign.com/ex/rgbaColorPicker/>
+- Stress Test, v0.9 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
 ### Version History
 - 0.9 - Updated to include the new version of tinycolor.js, turned images into date URIs, renamed several files, convertered stress test into HTML
