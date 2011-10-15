@@ -102,7 +102,10 @@
 }
 
 .selectedcolor {
-	background: transparent url(color_pill.png) no-repeat center center;
+	background: transparent;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAAZCAYAAACCXybJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA7xJREFUeNrsWMtO6zAQddPwfhRQEUJigRAr/o1/5EMQYoHEphRR8Ujj2L7nDB7LpOHeu4BWolgaeew4ac6ceaW98XgczJKN3i/oJRjOuVnQo9HITCaTHwNyd3fXDIfDtPbemzI/8PDwIIDPzs4usaQxQlEUOOdF5+j3+54z93gNquOzoDfQKRZS4/p0dXW1mmLgWlWWZWWtnULqtbW1GtvNy8uLOz8/l/v5/MfHxy/3upubG3mmAu/1eqbIDzw9PZnT09PL+BL+3TA+gVfAEaSekTXcJug9PAeQct/KykoyGH9je3s7AQPgbw8tENhre27ZPgQwTlnOXlbIzfZ9tpcMoGebpglxL9R1TV3B/RXk/v7+lwKG53TuF5GAD6DpsiqM/ff4d151glW3ps5reh4sO7BMpj1cmUwnY21sbIgRDw4OwvHxsfzw1dXVt7FMI3YZsuzIbk5ZajOuTCrLdGMCB7PJCNRpOAAWgyjT2b2SLKuqWkjCZEx3ubfN3brL1QmWMdxybxcTmXoJ2XbRICppnJycyLMuLi7mXjJn3Dtm3hpAPggslHRmaJyxMVNLxqaxqMc5GYDACXh9fd0/Pz8L4MPDw3B7e7uwMjbDNAFrMgKj4TPW6bJkWBknQNzrYJyGBgFYzsI6SpcA39ra8js7OxI6qBILaYoIpehw74qCl08zDk4prL0U7Iuw5qqu3gFD1QBsEbME3SCRCXiwzPLnEc9itOvr639m87nFNDbfwLJhndUazdaNa1xLLAOwAYMpQ+dsR7cmYMsGBLPb3NyU+EaTIExnNTrMG3xB5C2m33IB4Aod1BvAVNTJPrssrpV57KsXkOUaa5kBuIFhGlYE1Ewpbff39+1QMf9Tw7/Svcs2aLw4wZrYYdEIwrQ2GNxHUmLTITr3WZPhzoHMczB5cZBhsOtQnwleyhjqs18Eux+IbW/gJSvEpTDMWdcQsixzvCb9dFxPoZPxGudrAORsYRwL4wjTaEgENGJ5JikuPHvjxQiEmdvEDM45uR+7qtfXV3WVgFiVtdZfrIVtlijGMNcEe3d351Gb837dzNu1P2Uan2L6NcSvJBH9OqJONlXn1xLXnFXIMMoSjtgGLWCD2R0dHTm4fw54Liyz9+7qv8sO9+bLC3ORYcN19IKga17jA/f29kLMBQGZOYFRPfbYmq27AIeFxvRgMDCIuTHi0AJMEiRrEcanCli0cHXuN4hXqcu0GTot+SjBc3z+idrB8rcBzhnm9zT/SMjr9NL9c/L7x+Av6B8+/ggwAMinXM9Bv6chAAAAAElFTkSuQmCC);
 	z-index: 1;
 	width: 56px;
 	height: 20px;
@@ -120,7 +123,7 @@
 	margin-right: 0;
 	margin-left: 0;
 	margin-bottom: -2px;
-	background: url(transparancy_background.png) center center;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////MzMzOFSMkQAAABhJREFUeNpiYIQBBjgYrEKD3oFwIYAAAwBtjACj0tagCwAAAABJRU5ErkJggg==);
 	display: inline-block;
 }
 
@@ -139,17 +142,4 @@ input.actualcolor {
 	background-color: #efefef;
 	color: #676767;
 	margin: 0;
-}
-
-/* Example Page Styles */
-
-p.left,p.mid,p.right {
-	display: inline-block;
-	width: 33%;
-	vertical-align: top;
-}
-
-input.updatecolors {
-	margin-top: 7px;
-	margin-left: 7px;
 }

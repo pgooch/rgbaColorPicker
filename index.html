@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Color Picker (name/hex/rgba)</title>
-	<link rel="stylesheet" href="stylesheet.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="rgbacolorpicker.css" type="text/css" media="all" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="tinycolor-mod.js"></script>
-	<script type="text/javascript" src="colorpicker.js"></script>
+	<script type="text/javascript" src="tinycolor-min.js"></script>
+	<script type="text/javascript" src="rgbacolorpicker.js"></script>
 	<script type="text/javascript">
 		function changecolors(){
 			$('h1,h2').css('color',$('input[name="headings"]').val());
@@ -16,6 +16,18 @@
 			$('body').css('background',$('input[name="background"]').val());
 		}
 	</script>
+	<style type="text/css">
+		p.left,p.mid,p.right {
+			display: inline-block;
+			width: 33%;
+			vertical-align: top;
+		}
+
+		input.updatecolors {
+			margin-top: 7px;
+			margin-left: 7px;
+		}
+	</style>
 </head>
 <body>
 <h1> Color Picker </h1>
@@ -27,11 +39,11 @@
 <input type="text" class="rgbapicker" value="indigo" name="r6" />
 <input type="text" class="rgbapicker" value="violet" name="r7" />
 <h2> Change this pages colors </h2>
-<input type="text" class="rgbapicker" value="black" name="headings" />
-<input type="text" class="rgbapicker" value="white" name="left" />
-<input type="text" class="rgbapicker" value="white" name="mid" />
-<input type="text" class="rgbapicker" value="white" name="right" />
-<input type="text" class="rgbapicker" value="white" name="background" />
+Headings:<input type="text" class="rgbapicker" value="black" name="headings" />
+Left P:<input type="text" class="rgbapicker" value="black" name="left" />
+Middle P:<input type="text" class="rgbapicker" value="black" name="mid" />
+Right P:<input type="text" class="rgbapicker" value="black" name="right" />
+Background:<input type="text" class="rgbapicker" value="white" name="background" />
 <input type="button" value="Change Colors" onclick="changecolors()" class="updatecolors"/>
 <div></div>
 <p class="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper orci est. Vestibulum tempor volutpat dui, nec faucibus velit faucibus ac. Fusce sollicitudin iaculis pulvinar. Nullam tincidunt laoreet suscipit. Donec nec justo eros. Mauris fermentum viverra enim quis tristique. Proin quis nunc felis, malesuada consectetur felis. Suspendisse id volutpat erat. Donec eu fringilla velit.<br/><br/>Phasellus in enim eget odio auctor tempor. Curabitur elit magna, placerat eget dictum id, aliquam eget lectus. Nullam sit amet quam eget odio ullamcorper cursus non facilisis erat. Quisque purus mauris, varius sit amet aliquet sed, laoreet vel eros. Proin id lorem non ante fermentum adipiscing. Vestibulum nec ipsum vel justo mollis pretium cursus et est. Donec varius iaculis metus, nec interdum urna dapibus sed. Maecenas non porttitor orci. Sed dolor est, facilisis a faucibus non, tempor at velit. Aenean orci diam, condimentum a congue eget, imperdiet ut dolor. Duis vestibulum tincidunt aliquam. Sed rutrum purus non nunc euismod in fringilla est viverra.</p>
