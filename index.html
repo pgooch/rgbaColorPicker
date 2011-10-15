@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Color Picker (name/hex/rgba)</title>
+	<link rel="stylesheet" href="stylesheet.css" type="text/css" media="all" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="tinycolor-mod.js"></script>
+	<script type="text/javascript" src="colorpicker.js"></script>
+	<script type="text/javascript">
+		function changecolors(){
+			$('h1,h2').css('color',$('input[name="headings"]').val());
+			$('p.left').css('color',$('input[name="left"]').val());
+			$('p.mid').css('color',$('input[name="mid"]').val());
+			$('p.right').css('color',$('input[name="right"]').val());
+			$('body').css('background',$('input[name="background"]').val());
+		}
+	</script>
+</head>
+<body>
+<h1> Color Picker </h1>
+<input type="text" class="rgbapicker" value="red" name="r1" />
+<input type="text" class="rgbapicker" value="orange" name="r2" />
+<input type="text" class="rgbapicker" value="yellow" name="r3" />
+<input type="text" class="rgbapicker" value="green" name="r4" />
+<input type="text" class="rgbapicker" value="blue" name="r5" />
+<input type="text" class="rgbapicker" value="indigo" name="r6" />
+<input type="text" class="rgbapicker" value="violet" name="r7" />
+<h2> Change this pages colors </h2>
+<input type="text" class="rgbapicker" value="black" name="headings" />
+<input type="text" class="rgbapicker" value="white" name="left" />
+<input type="text" class="rgbapicker" value="white" name="mid" />
+<input type="text" class="rgbapicker" value="white" name="right" />
+<input type="text" class="rgbapicker" value="white" name="background" />
+<input type="button" value="Change Colors" onclick="changecolors()" class="updatecolors"/>
+<div></div>
+<p class="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper orci est. Vestibulum tempor volutpat dui, nec faucibus velit faucibus ac. Fusce sollicitudin iaculis pulvinar. Nullam tincidunt laoreet suscipit. Donec nec justo eros. Mauris fermentum viverra enim quis tristique. Proin quis nunc felis, malesuada consectetur felis. Suspendisse id volutpat erat. Donec eu fringilla velit.<br/><br/>Phasellus in enim eget odio auctor tempor. Curabitur elit magna, placerat eget dictum id, aliquam eget lectus. Nullam sit amet quam eget odio ullamcorper cursus non facilisis erat. Quisque purus mauris, varius sit amet aliquet sed, laoreet vel eros. Proin id lorem non ante fermentum adipiscing. Vestibulum nec ipsum vel justo mollis pretium cursus et est. Donec varius iaculis metus, nec interdum urna dapibus sed. Maecenas non porttitor orci. Sed dolor est, facilisis a faucibus non, tempor at velit. Aenean orci diam, condimentum a congue eget, imperdiet ut dolor. Duis vestibulum tincidunt aliquam. Sed rutrum purus non nunc euismod in fringilla est viverra.</p>
+<p class="mid">Cras nec eros a mi adipiscing rhoncus. Suspendisse id neque ante. Ut vestibulum scelerisque erat a pretium. Pellentesque varius, enim id volutpat pretium, nibh justo rutrum mi, porttitor pharetra tellus justo vitae eros. Duis erat ante, convallis in posuere a, consectetur at nulla. Ut a dolor nisl. Sed pharetra, ipsum et euismod elementum, mauris justo porta augue, adipiscing pharetra turpis ante eget diam. Nulla condimentum egestas fringilla. Morbi et mauris et lacus pharetra pulvinar eget nec odio. Proin eleifend neque a mi aliquet eu sodales tortor tincidunt. Etiam placerat elit in dui viverra dapibus. Sed quis tortor in lacus condimentum interdum. Nullam viverra, nulla ac congue scelerisque, libero neque eleifend nunc, sed tristique mauris neque sed massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat viverra quam, molestie auctor dui tincidunt quis. Fusce ut ante eu sem semper accumsan non nec sem.<br/><br/>Donec et felis a lacus scelerisque elementum. Etiam lobortis porta leo in malesuada. Pellentesque laoreet magna id quam imperdiet sed imperdiet nisl gravida. Curabitur non nunc vel lacus accumsan luctus ut nec sem. Nullam euismod, lectus sit amet sollicitudin convallis, turpis libero tempus felis, commodo tristique massa massa et nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec placerat scelerisque hendrerit. Quisque eget elit risus. Phasellus viverra tellus ut erat tempor a ornare lorem fringilla. Donec commodo vehicula est, id congue felis cursus adipiscing. Curabitur ultrices metus non tortor tincidunt nec pulvinar ligula porttitor. Donec vulputate molestie iaculis. In euismod mi lacus. Integer tempus eros et ipsum porttitor eleifend. Praesent volutpat nunc sit amet lectus pretium vehicula.</p>
+<p class="right">Phasellus nulla diam, tempus sit amet egestas sit amet, auctor vel quam. Nulla non lorem felis, et euismod nulla. Integer magna magna, elementum vitae pharetra a, scelerisque et dui. Proin porta dolor sagittis ipsum mattis faucibus. Cras quam turpis, molestie eu fringilla eget, accumsan sit amet justo. In aliquet urna ut tellus dictum sodales. Sed ac mauris massa, non lacinia ligula. Vivamus a erat enim. Fusce id quam quis libero rutrum interdum ac eu odio. Vivamus placerat, magna at pulvinar eleifend, tortor dolor facilisis leo, in semper lorem risus id metus.<br/><br/>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque volutpat venenatis lobortis. Aliquam erat volutpat. Sed non mi quis est imperdiet dapibus. Nulla imperdiet lorem facilisis sem luctus posuere sagittis ipsum iaculis. Ut dolor ligula, fermentum ac porttitor sed, rhoncus vel augue. Praesent dui enim, elementum at volutpat in, mollis non nisi. Nunc ac elit leo, quis malesuada ipsum. Sed ut est in sapien dignissim fermentum. Integer eget nunc velit. Proin massa augue, hendrerit ac suscipit a, blandit et lorem. Suspendisse erat nulla, ullamcorper malesuada ultricies ut, luctus a mi. Pellentesque posuere libero eu odio imperdiet scelerisque.<br/><br/>Curabitur at congue mi. Donec quis imperdiet sem. Curabitur pellentesque lacinia dui, eget imperdiet elit viverra nec. Integer elementum nisl non mi sollicitudin congue. Duis quis neque nunc, quis imperdiet lacus. Fusce a ultricies nunc. Nam dapibus pretium nulla, in malesuada quam placerat pretium. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent non suscipit enim. Sed eu convallis felis. Donec accumsan rutrum sem, non malesuada libero interdum in. Proin laoreet justo non lorem lobortis condimentum. Quisque consectetur sapien a leo cursus tincidunt vitae at magna. Nullam porta nisi in nisi aliquet vitae egestas velit interdum.</p>
+</body>
+</html>
