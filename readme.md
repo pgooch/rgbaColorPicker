@@ -1,11 +1,10 @@
 # rgbaColorPicker
 
 ### Usage
-To use the rgbaColor Picker you'll need to include a version of jQuery (tested with 1.6.4, although older version should be fine), the rgbacolorpicker.js file, and either include the rgbacolorpicker.css file, or add the styles from it into an already included css file. To create a color picker make an input and give it the class "rgbacolorpicker", the script will do the rest.
+At it's current state this you simply need to include the script, modified verion of tinycolor, stylesheet (with images in the same directory), and jQuery (lowest required version has not been determined, but works fine with 1.6) then create inputs with the class "rgbapicker". The script will replace the inputs with color pickers, preserving input names in the process.
 
 ### Outputs
 The script will output colors in the following order; Name, Hex, rgba.
     
 ### Version History
-- 0.9 - Updated to include the new version of tinycolor.js, turned images into date URIs, renamed several files, convertered stress test into HTML
 - 0.8 - Initial Release
