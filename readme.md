@@ -9,3 +9,6 @@ The script will output colors in the following order; Name, Hex, rgba.
 ### Version History
 - 0.9 - Updated to include the new version of tinycolor.js, turned images into date URIs, renamed several files, convertered stress test into HTML
 - 0.8 - Initial Release
+
+### Additional Rescources
+- tinycolor.js by bgrins (<http://bgrins.github.com/TinyColor/>)
