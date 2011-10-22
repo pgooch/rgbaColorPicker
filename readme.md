@@ -1,7 +1,7 @@
 # rgbaColorPicker
 
 ### Usage
-To install the rgbaColorPicker simple include rgbacolorpicker.min.js after you've included jQuery (tested with version 1.6.4, but should be backwards compatible). The script will automatically convert any inputs with the class "<code>.rgbacolorpicker</code>" into color pickers. This class can be changed by modify the "<code>autorun</code>" variable inside the script file. You can disable autorun by setting "autorun" to a blank".
+To install the rgbaColorPicker simple include rgbacolorpicker.min.js after you've included jQuery (version 1.4.3 or greater). The script will automatically convert any inputs with the class "<code>.rgbacolorpicker</code>" into color pickers. This class can be changed by modify the "<code>autorun</code>" variable inside the script file. You can disable autorun by setting "autorun" to a blank".
 
 After installation you can manually run the colorpicker by calling the function "<code>.rgbacolorpicker()</code>". This will convert whatever you select into a color picker, regardless of if it in an input or not. *Note that if you choose to convert a non-input items your picker the color selection will not be savable.* Additionally when manually calling the colorpicker you can pass the options to it with a standard object. Currently only the following variable is recognized:
 
@@ -15,6 +15,8 @@ For example to mimic the original version of this script you would manually call
 while mimicking the last version manually would simply be
 
 <code>$(input.rgbapicker).rgbacolorpicker();</code>
+
+Code is also up in on the jQuery plugins section here: <http://plugins.jquery.com/project/rgbaColorPicker>
 
 ### Outputs
 The script will output colors in the following order; Name, Hex, rgba.
