@@ -1,3 +1,176 @@
+$(document).ready(function(){
+	$('input.rgbapicker').each(function(){
+		var c = tinycolor($(this).val()).toRgb();
+		$(this).replaceWith(
+			'<div class="rgbapicker_container">'+
+				'<div class="rgbapicker">'+
+					'<div class="selectedcolorconainer" ><div class="selectedcolor" ></div></div>'+
+					'<input type="text" name="'+$(this).attr('name')+'" class="actualcolor">'+
+					'<input type="hidden" class="color_r" value="'+c.r+'"/>'+
+					'<input type="hidden" class="color_g" value="'+c.g+'"/>'+
+					'<input type="hidden" class="color_b" value="'+c.b+'"/>'+
+					'<input type="hidden" class="color_a" value="'+c.a+'"/>'+
+					'<div class="colorselect"><div class="colorhighlight"></div></div>'+
+					'<div class="grayselect"><div class="grayhighlight"></div></div>'+
+					'<div class="alphaselect"><div class="alphahighlight"></div></div>'+
+					'<div class="shrink"></div>'+
+					'<div class="backdrop"></div>'+
+				'</div>'+
+			'</div>'
+		);
+	});
+	$('div.rgbapicker').each(function(){
+		initial_load(this); // this sets the inital color
+		$(this).find('.selectedcolor').click(function(e){
+			$(this).parent().parent().css('width','380px')
+			$(this).parent().parent().css('height','222px')
+			$(this).parent().parent().css('box-shadow','5px 5px 25px 0px rgba(0, 0, 0, .3)')
+			$(this).parent().parent().parent().css('z-index','9003')
+			$(this).parent().parent().children('.backdrop').css('display','block')
+		})
+		$(this).find('.colorselect').mousedown(function(e){
+			xy = get_xy(this,e,'.colorselect');
+			var c = get_color(xy)
+			update_color(this,c.r,c.g,c.b)
+			update_alpha_overlay(this,c.r,c.g,c.b)
+			$(this).find('.colorhighlight').show().css('left',xy.relative.x).css('top',xy.relative.y)
+			$(this).parent().find('.grayhighlight').hide();
+			$(this).mousemove(function(e){
+				xy = get_xy(this,e);
+				if((xy.relative.x>=0) && (xy.relative.x<360) && (xy.relative.y>=0) && (xy.relative.y<180)){
+					$(this).find('.colorhighlight').css('left',xy.relative.x).css('top',xy.relative.y)
+					var c = get_color(xy)
+					update_color(this,c.r,c.g,c.b)
+					update_alpha_overlay(this,c.r,c.g,c.b)
+				}
+			});
+			$(this).mouseleave(function(e){
+				$(this).unbind('mousemove');
+			})
+			$(this).mouseup(function(e){
+				$(this).unbind('mousemove');
+			});
+		});
+		$(this).find('.grayselect').mousedown(function(e){
+			xy = get_xy(this,e,'.grayselect');
+			var g = get_gray(xy)
+			update_color(this,g,g,g)
+			update_alpha_overlay(this,g,g,g)
+			$(this).find('.grayhighlight').show().css('left',xy.relative.x).css('top',0)
+			$(this).parent().find('.colorhighlight').hide();
+			$(this).mousemove(function(e){
+				xy = get_xy(this,e);
+				if((xy.relative.x>=0) && (xy.relative.x<360) && (xy.relative.y>=0) && (xy.relative.y<18)){
+					$(this).find('.grayhighlight').css('left',xy.relative.x).css('top',0)
+					var g = get_gray(xy)
+					update_color(this,g,g,g)
+					update_alpha_overlay(this,g,g,g)
+				}
+			});
+			$(this).mouseleave(function(e){
+				$(this).unbind('mousemove');
+			})
+			$(this).mouseup(function(e){
+				$(this).unbind('mousemove');
+			});
+		});
+		$(this).find('.alphaselect').mousedown(function(e){
+			xy = get_xy(this,e,'.alphaselect');
+			var a = get_alpha(xy)
+			update_color(this,undefined,undefined,undefined,a)
+			$(this).find('.alphahighlight').show().css('left',0).css('top',xy.relative.y)
+			$(this).mousemove(function(e){
+				xy = get_xy(this,e);
+				if((xy.relative.x>=0) && (xy.relative.x<18) && (xy.relative.y>=0) && (xy.relative.y<180)){
+					$(this).find('.alphahighlight').css('left',0).css('top',xy.relative.y)
+					var a = get_alpha(xy)
+					update_color(this,undefined,undefined,undefined,a)
+				}
+			});
+			$(this).mouseleave(function(e){
+				$(this).unbind('mousemove');
+			})
+			$(this).mouseup(function(e){
+				$(this).unbind('mousemove');
+			});
+		});
+		$(this).find('.shrink,.backdrop').click(function(e){
+			$(this).parent().css('width','55px')
+			$(this).parent().css('height','19px')
+			$(this).parent().css('box-shadow','5px 5px 15px 0px rgba(0, 0, 0, .1)')
+			$(this).parent().parent().css('z-index','9001')
+			$(this).parent().children('.backdrop').css('display','none')
+		});
+	});
+	function initial_load(target){
+		update_color($(target).find('.colorselect'));
+	}
+	function get_xy(target,e){
+		var xy={};xy.absolute={};xy.element={};xy.relative={};xy.container={};
+		xy.absolute.x = e.pageX;
+		xy.absolute.y = e.pageY;
+		xy.element.x = $(target).position().left
+		xy.element.y = $(target).position().top
+		xy.container.x = $(target).parent().parent().position().left
+		xy.container.y = $(target).parent().parent().position().top
+		xy.relative.x = (xy.absolute.x-xy.element.x)-xy.container.x;
+		xy.relative.y = (xy.absolute.y-xy.element.y)-xy.container.y;
+		return xy;
+	}
+	function get_color(xy){
+		var h=Math.round((xy.relative.x/359)*360);
+		var s=100; // always 100 unless selecting a gray
+		var l=Math.round(((xy.relative.y/179)-1)*-100)
+		return tinycolor('hsl('+h+','+s+','+l+')').toRgb()
+	}
+	function get_gray(xy){
+		var h=0 ;// always 0 unless selecting a color
+		var s=Math.round((xy.relative.x/359)*255);
+		var l=Math.round(((xy.relative.y/179)-1)*-100);
+		return s;
+	}
+	function get_alpha(xy){
+		var a=Math.round(((xy.relative.y/179)*-100)+100)/100;
+		return a;
+	}
+	function update_color(target,r,g,b,a){
+		if(r==undefined){r=$(target).parent('div.rgbapicker').find('.color_r').val();}
+		if(g==undefined){g=$(target).parent('div.rgbapicker').find('.color_g').val();}
+		if(b==undefined){b=$(target).parent('div.rgbapicker').find('.color_b').val();}
+		if(a==undefined){a=$(target).parent('div.rgbapicker').find('.color_a').val();}
+		if(r!=undefined){$(target).parent('div.rgbapicker').find('.color_r').val(r)};
+		if(g!=undefined){$(target).parent('div.rgbapicker').find('.color_g').val(g)};
+		if(b!=undefined){$(target).parent('div.rgbapicker').find('.color_b').val(b)};
+		if(a!=undefined){$(target).parent('div.rgbapicker').find('.color_a').val(a)};
+		var c = 'rgba('+r+','+g+','+b+','+a+')';
+		var f = 'transparent';
+		if(a==1){
+			if(tinycolor(c).toName()){
+				f = tinycolor(c).toName();
+			}else if(a==1){
+				f = tinycolor(c).toHexString();
+			}
+		}else if(a==0){
+			f = 'transparent'
+		}else{
+			f = tinycolor(c).toRgbString();
+		}
+		$(target).parent('div.rgbapicker').find('.actualcolor').val(f);
+		$(target).parent('div.rgbapicker').find('.selectedcolor').css('background-color',f);
+	}
+	function update_alpha_overlay(target,r,g,b){
+		var rgba_o = 'rgba('+r+','+g+','+b+',1)';
+		var rgba_t = 'rgba('+r+','+g+','+b+',0)';
+		$(target).parent().find('.alphaselect').css('background','-moz-linear-gradient(top, '+rgba_o+' 0%, '+rgba_t+' 100%)');
+		$(target).parent().find('.alphaselect').css('background','-webkit-gradient(linear, left top, left bottom, color-stop(0%,'+rgba_o+'), color-stop(100%,'+rgba_t+'))');
+		$(target).parent().find('.alphaselect').css('background','-webkit-linear-gradient(top, '+rgba_o+' 0%,'+rgba_t+' 100%)');
+		$(target).parent().find('.alphaselect').css('background','-o-linear-gradient(top, '+rgba_o+' 0%,'+rgba_t+' 100%)');
+		$(target).parent().find('.alphaselect').css('background','-ms-linear-gradient(top, '+rgba_o+' 0%,'+rgba_t+' 100%)');
+		$(target).parent().find('.alphaselect').css('background','-linear-gradient(top, '+rgba_o+' 0%,'+rgba_t+' 100%)');
+		$(target).parent().find('.alphaselect').css('filter',"progid:DXImageTransform.Microsoft.gradient( startColorstr='"+rgba_o+"', endColorstr='"+rgba_t+"',GradientType=0 )");
+	}
+});
+
 // TinyColor.js - <https://github.com/bgrins/TinyColor> - 2011 Brian Grinstead - v0.5
 (function(s){function d(a,b){if(typeof a=="object"&&a.hasOwnProperty("_tc_id"))return a;if(typeof a=="object"&&(!b||!b.skipRatio))for(var c in a)a[c]===1&&(a[c]="1.0");c=v(a);var j=c.r,d=c.g,f=c.b,g=n(c.a);j<1&&(j=e(j));d<1&&(d=e(d));f<1&&(f=e(f));return{ok:c.ok,_tc_id:w++,alpha:g,toHsv:function(){var a=t(j,d,f);return{h:a.h,s:a.s,v:a.v,a:g}},toHsvString:function(){var a=t(j,d,f),b=e(a.h*360),c=e(a.s*100);a=e(a.v*100);return g==1?"hsv("+b+", "+c+"%, "+a+"%)":"hsva("+b+", "+c+"%, "+a+"%, "+g+")"},
 toHsl:function(){var a=u(j,d,f);return{h:a.h,s:a.s,l:a.l,a:g}},toHslString:function(){var a=u(j,d,f),b=e(a.h*360),c=e(a.s*100);a=e(a.l*100);return g==1?"hsl("+b+", "+c+"%, "+a+"%)":"hsla("+b+", "+c+"%, "+a+"%, "+g+")"},toHex:function(){return q(j,d,f)},toHexString:function(){return"#"+q(j,d,f)},toRgb:function(){return{r:e(j),g:e(d),b:e(f),a:g}},toRgbString:function(){return g==1?"rgb("+e(j)+", "+e(d)+", "+e(f)+")":"rgba("+e(j)+", "+e(d)+", "+e(f)+", "+g+")"},toName:function(){return x[q(j,d,f)]||
