@@ -4,14 +4,27 @@
 	<meta charset="utf-8" />
 	<title>Color Picker (name/hex/rgba)</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="rgbacolorpicker.single.min.js"></script>
+	<script type="text/javascript" src="rgbacolorpicker.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.rainbowpick').rgbacolorpicker({stylesheet:'rgbacolorpicker.css',callback:updaterainbow});
+			for(var r=0;r<=7;r++){
+				$('#r'+r+'b').css('background-color',$('input[name="r'+r+'"]').val());
+			}
+		})
 		function changecolors(){
 			$('h1,h2').css('color',$('input[name="headings"]').val());
 			$('p.left').css('color',$('input[name="left"]').val());
 			$('p.mid').css('color',$('input[name="mid"]').val());
 			$('p.right').css('color',$('input[name="right"]').val());
+			$('p.left').css('background-color',$('input[name="leftb"]').val());
+			$('p.mid').css('background-color',$('input[name="midb"]').val());
+			$('p.right').css('background-color',$('input[name="rightb"]').val());
 			$('body').css('background',$('input[name="background"]').val());
+			$('a').css('color',$('input[name="links"]').val());
+		}
+		function updaterainbow(name,color){
+			$('#'+name+'b').css('background-color',color);
 		}
 	</script>
 	<style type="text/css">
@@ -20,32 +33,84 @@
 			width: 33%;
 			vertical-align: top;
 		}
-
+		ul{
+			display:inline-block;
+			width:30%;
+		}
+		.rainbow{
+			display: inline-block;
+			width: 14.3%;
+			text-align: center;
+			padding-bottom: 26px;
+			padding-top: 20px;
+			margin: -2px;
+		}
 		input.updatecolors {
 			margin-top: 7px;
 			margin-left: 7px;
 		}
+		.chagne_doc .rgbapicker_container {
+			vertical-align: -8px;
+			margin-left: 5px;
+			margin-right: 20px;
+		}
+		label{display:inline-block;}
 	</style>
 </head>
 <body>
 <h1> Color Picker </h1>
-<input type="text" class="rgbapicker" value="red" name="r1" />
-<input type="text" class="rgbapicker" value="orange" name="r2" />
-<input type="text" class="rgbapicker" value="yellow" name="r3" />
-<input type="text" class="rgbapicker" value="green" name="r4" />
-<input type="text" class="rgbapicker" value="blue" name="r5" />
-<input type="text" class="rgbapicker" value="indigo" name="r6" />
-<input type="text" class="rgbapicker" value="violet" name="r7" />
-<h2> Change this pages colors </h2>
-Headings:<input type="text" class="rgbapicker" value="black" name="headings" />
-Left P:<input type="text" class="rgbapicker" value="black" name="left" />
-Middle P:<input type="text" class="rgbapicker" value="black" name="mid" />
-Right P:<input type="text" class="rgbapicker" value="black" name="right" />
-Background:<input type="text" class="rgbapicker" value="white" name="background" />
-<input type="button" value="Change Colors" onclick="changecolors()" class="updatecolors"/>
+<div class="rainbow" id="r1b"><input type="text" class="rainbowpick" value="red" name="r1" /></div>
+<div class="rainbow" id="r2b"><input type="text" class="rainbowpick" value="orange" name="r2" /></div>
+<div class="rainbow" id="r3b"><input type="text" class="rainbowpick" value="yellow" name="r3" /></div>
+<div class="rainbow" id="r4b"><input type="text" class="rainbowpick" value="green" name="r4" /></div>
+<div class="rainbow" id="r5b"><input type="text" class="rainbowpick" value="blue" name="r5" /></div>
+<div class="rainbow" id="r6b"><input type="text" class="rainbowpick" value="indigo" name="r6" /></div>
+<div class="rainbow" id="r7b"><input type="text" class="rainbowpick" value="violet" name="r7" /></div>
 <div></div>
-<p class="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper orci est. Vestibulum tempor volutpat dui, nec faucibus velit faucibus ac. Fusce sollicitudin iaculis pulvinar. Nullam tincidunt laoreet suscipit. Donec nec justo eros. Mauris fermentum viverra enim quis tristique. Proin quis nunc felis, malesuada consectetur felis. Suspendisse id volutpat erat. Donec eu fringilla velit.<br/><br/>Phasellus in enim eget odio auctor tempor. Curabitur elit magna, placerat eget dictum id, aliquam eget lectus. Nullam sit amet quam eget odio ullamcorper cursus non facilisis erat. Quisque purus mauris, varius sit amet aliquet sed, laoreet vel eros. Proin id lorem non ante fermentum adipiscing. Vestibulum nec ipsum vel justo mollis pretium cursus et est. Donec varius iaculis metus, nec interdum urna dapibus sed. Maecenas non porttitor orci. Sed dolor est, facilisis a faucibus non, tempor at velit. Aenean orci diam, condimentum a congue eget, imperdiet ut dolor. Duis vestibulum tincidunt aliquam. Sed rutrum purus non nunc euismod in fringilla est viverra.</p>
-<p class="mid">Cras nec eros a mi adipiscing rhoncus. Suspendisse id neque ante. Ut vestibulum scelerisque erat a pretium. Pellentesque varius, enim id volutpat pretium, nibh justo rutrum mi, porttitor pharetra tellus justo vitae eros. Duis erat ante, convallis in posuere a, consectetur at nulla. Ut a dolor nisl. Sed pharetra, ipsum et euismod elementum, mauris justo porta augue, adipiscing pharetra turpis ante eget diam. Nulla condimentum egestas fringilla. Morbi et mauris et lacus pharetra pulvinar eget nec odio. Proin eleifend neque a mi aliquet eu sodales tortor tincidunt. Etiam placerat elit in dui viverra dapibus. Sed quis tortor in lacus condimentum interdum. Nullam viverra, nulla ac congue scelerisque, libero neque eleifend nunc, sed tristique mauris neque sed massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat viverra quam, molestie auctor dui tincidunt quis. Fusce ut ante eu sem semper accumsan non nec sem.<br/><br/>Donec et felis a lacus scelerisque elementum. Etiam lobortis porta leo in malesuada. Pellentesque laoreet magna id quam imperdiet sed imperdiet nisl gravida. Curabitur non nunc vel lacus accumsan luctus ut nec sem. Nullam euismod, lectus sit amet sollicitudin convallis, turpis libero tempus felis, commodo tristique massa massa et nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec placerat scelerisque hendrerit. Quisque eget elit risus. Phasellus viverra tellus ut erat tempor a ornare lorem fringilla. Donec commodo vehicula est, id congue felis cursus adipiscing. Curabitur ultrices metus non tortor tincidunt nec pulvinar ligula porttitor. Donec vulputate molestie iaculis. In euismod mi lacus. Integer tempus eros et ipsum porttitor eleifend. Praesent volutpat nunc sit amet lectus pretium vehicula.</p>
-<p class="right">Phasellus nulla diam, tempus sit amet egestas sit amet, auctor vel quam. Nulla non lorem felis, et euismod nulla. Integer magna magna, elementum vitae pharetra a, scelerisque et dui. Proin porta dolor sagittis ipsum mattis faucibus. Cras quam turpis, molestie eu fringilla eget, accumsan sit amet justo. In aliquet urna ut tellus dictum sodales. Sed ac mauris massa, non lacinia ligula. Vivamus a erat enim. Fusce id quam quis libero rutrum interdum ac eu odio. Vivamus placerat, magna at pulvinar eleifend, tortor dolor facilisis leo, in semper lorem risus id metus.<br/><br/>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque volutpat venenatis lobortis. Aliquam erat volutpat. Sed non mi quis est imperdiet dapibus. Nulla imperdiet lorem facilisis sem luctus posuere sagittis ipsum iaculis. Ut dolor ligula, fermentum ac porttitor sed, rhoncus vel augue. Praesent dui enim, elementum at volutpat in, mollis non nisi. Nunc ac elit leo, quis malesuada ipsum. Sed ut est in sapien dignissim fermentum. Integer eget nunc velit. Proin massa augue, hendrerit ac suscipit a, blandit et lorem. Suspendisse erat nulla, ullamcorper malesuada ultricies ut, luctus a mi. Pellentesque posuere libero eu odio imperdiet scelerisque.<br/><br/>Curabitur at congue mi. Donec quis imperdiet sem. Curabitur pellentesque lacinia dui, eget imperdiet elit viverra nec. Integer elementum nisl non mi sollicitudin congue. Duis quis neque nunc, quis imperdiet lacus. Fusce a ultricies nunc. Nam dapibus pretium nulla, in malesuada quam placerat pretium. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent non suscipit enim. Sed eu convallis felis. Donec accumsan rutrum sem, non malesuada libero interdum in. Proin laoreet justo non lorem lobortis condimentum. Quisque consectetur sapien a leo cursus tincidunt vitae at magna. Nullam porta nisi in nisi aliquet vitae egestas velit interdum.</p>
+<h2> Change this pages colors </h2>
+<div class="chagne_doc">
+	<label>Headings:<input type="text" class="rgbapicker" value="black" name="headings" /></label>
+	<label>Left P:<input type="text" class="rgbapicker" value="black" name="left" /></label>
+	<label>Middle P:<input type="text" class="rgbapicker" value="black" name="mid" /></label>
+	<label>Right P:<input type="text" class="rgbapicker" value="black" name="right" /></label>
+	<label>Left P Back:<input type="text" class="rgbapicker" value="transparent" name="leftb" /></label>
+	<label>Middle P Back:<input type="text" class="rgbapicker" value="transparent" name="midb" /></label>
+	<label>Right P Back:<input type="text" class="rgbapicker" value="transparent" name="rightb" /></label>
+	<label>Background:<input type="text" class="rgbapicker" value="white" name="background" /></label>
+	<label>Links:<input type="text" class="rgbapicker" value="blue" name="links" /></label>
+	<input type="button" value="Change Colors" onclick="changecolors()" class="updatecolors"/>
+</div>
+<div></div>
+
+<p class="left">
+<b>What it is?</b><br/>
+rgbaColorPicker is a color picker, obviously, but what it does that surprising few other don't is allow selection with alpha transparency. Back in 'ye-olde days' web browser didn't support anything more advanced that a solid color, or no color at all (completely transparent in other words) this was to be excepted, but current browsers are a different story. With such a new fangled feature you'd think it'd be more quickly adopted but it really hasn't been, still few sites use alpha colors even though the vase majority of browser support them.
+</p>
+<p class="mid">
+<b>Is it compatible?</b><br/>
+Compatible is a relative term, relative to who you care to support, but rgba colors are actually far better supported then you might think. Support for them breaks down like this:<br/>
+<br/> &nbsp; &bull; Firefox 3.0.5
+<br/> &nbsp; &bull; Safari 3.2.1
+<br/> &nbsp; &bull; Opera 10.0 <i>beta</i>
+<br/> &nbsp; &bull; Internet Explorer 9
+<br/> &nbsp; &bull; Google Chrome 0.4.154.33
+<br/> &nbsp; &bull; Sunrise 1.7.5
+<br/> &nbsp; &bull; Stainless 0.2.5
+<br/> &nbsp; &bull; Flock 1.2.7
+<br/> &nbsp; &bull; Camino 2.0b1
+<br/> &nbsp; &bull; Safari Mobile </i>(all versions)</i>
+<br/> &nbsp; &bull; Android Brwoser </i>(all versions)</i>
+<br/> &nbsp; &bull; Blackberry Storm Browser </i>(all versions)</i><br/><br/>
+Those are just the browsers that can't handle the alpha part of it, all older browsers (with three exceptions listed below) will simple display a solid color instead, so as long as long as you keep that in mind there shouldn't be problems. The few browsers with problems simply don't display any color however, they are:<br/>
+<br/> &nbsp; &bull; Internet Explorer <i>pre</i> 6
+<br/> &nbsp; &bull; Netscape <i>pre</i> 5
+<br/> &nbsp; &bull; Seamoney <i>pre</i> 1.2<br/><br/>
+This information was gathered from <a href="http://css-tricks.com/examples/RGBaSupport/" target="_blank">css-tricks.com</a>.
+</p>
+<p class="right">
+<b>Anything else i should know?</b><br/>
+Perhaps. The script requires jQuery (it is a jQuery plugin after all), if thats not an issue then it's really very easy to set-up, as simple as including a single file if you'd like. If your the kind of person who wants more control then there are options set up for that, either external stylesheets, callback functions, or both if you choose. Full details can be found in the readme.md file.<br/><br/>
+The plugin was written by me, Phillip Gooch, and makes use of the <a href="https://github.com/bgrins/TinyColor" target="_blank">tinycolor.js library by bgrins</a>, speaking of github, the color picker is up there too, you can view it at the <a href="https://github.com/pgooch/rgbaColorPicker" target="_blank">rgbaColorPicker github page</a>, feel free to fork and and play around, if you fix a bug or add a feature send a pull request and I'll get it integrated into the master branch. Ouside of github posts about updates will be made over at my personal blog <a href="http://www.fatfolderdesign.com/" target="_blank">Fat Folder Design</a>. Finally, if github or blog comments aren't your thing and your having a problem you can always send me a direct email at <a href="mailto:phillip.gooch@gmail.com</a>">phillip.gooch@gmail.com</a>
+</p>
 </body>
 </html>
