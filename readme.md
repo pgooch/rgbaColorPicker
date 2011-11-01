@@ -26,6 +26,12 @@ The script will output colors in the following order; Name, Hex, rgba.
 - Stress Test, v1.1 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
 ### Version History
+##### 1.2
+- You can now type values into the editor (select text box, may need more styling)
+- The selected color will not automatically be highlighted (and highlight moved when you type a color in as well)
+- Autorun disabled, because it was more trouble than it was worth.
+- Updated stresstest and index files.
+
 ##### 1.1
 - Picker now changes side to stay within widow.
 - Turned script into a proper jQuery plugin.

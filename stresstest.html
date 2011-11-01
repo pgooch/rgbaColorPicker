@@ -6,13 +6,9 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="rgbacolorpicker.min.js"></script>
 	<script type="text/javascript">
-		function changecolors(){
-			$('h1,h2').css('color',$('input[name="headings"]').val());
-			$('p.left').css('color',$('input[name="left"]').val());
-			$('p.mid').css('color',$('input[name="mid"]').val());
-			$('p.right').css('color',$('input[name="right"]').val());
-			$('body').css('background',$('input[name="background"]').val());
-		}
+		$(document).ready(function(){
+			$('.rgbapicker').rgbacolorpicker();
+		})
 	</script>
 </head>
 <body>

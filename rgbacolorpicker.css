@@ -22,10 +22,6 @@
 }
 
 .rgbapicker * {
-   -moz-user-select: -moz-none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   user-select: none;
    cursor: default;
 	position: static;
 }
@@ -156,7 +152,7 @@ input.actualcolor {
 	background-color: #efefef;
 	color: #676767;
 	margin: 0;
-	height: 15px;
+	height: 22px;
 	float: right;
 }
 

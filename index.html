@@ -11,6 +11,7 @@
 			for(var r=0;r<=7;r++){
 				$('#r'+r+'b').css('background-color',$('input[name="r'+r+'"]').val());
 			}
+			$('.rgbapicker').rgbacolorpicker();
 		})
 		function changecolors(){
 			$('h1,h2').css('color',$('input[name="headings"]').val());
