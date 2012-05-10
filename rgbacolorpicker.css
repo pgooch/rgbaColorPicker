@@ -37,7 +37,7 @@
 	margin-bottom: -180px;
 	opacity: 1;
 }
-.alphaselect{
+.alphaselect, .noalphaselect{
 	width: 18px;
 	height: 180px;
 	background-color: rgba(0,0,0,0.61);
@@ -47,6 +47,9 @@
 	top: 1px;
 	position: relative;
 	margin-bottom: -180px;
+}
+.noalphaselect{
+	background-color: #ededed;
 }
 .grayselect{
 	width: 360px;

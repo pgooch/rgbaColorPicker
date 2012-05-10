@@ -7,6 +7,7 @@ After installation you can manually run the colorpicker by calling the function 
 
 - stylesheet : false, 'path/to/stylesheet.css' - **default: false**
 - callback : 'callback function' - **default: none**
+- alpha : boolean  - **default: true**
 
 For example to mimic the original version of this script you would manually call it like this:
 
@@ -26,6 +27,9 @@ The script will output colors in the following order; Name, Hex, rgba.
 - Stress Test, v1.1 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
 ### Version History
+##### 1.3
+- New option alpha; limits the chooser to opaque colors, if set to false.
+
 ##### 1.2
 - You can now type values into the editor (select text box, may need more styling)
 - The selected color will not automatically be highlighted (and highlight moved when you type a color in as well)
