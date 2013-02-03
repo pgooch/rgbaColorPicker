@@ -27,6 +27,9 @@ The script will output colors in the following order; Name, Hex, rgba.
 - Stress Test, v1.1 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
 ### Version History
+##### 1.3.1
+- Added licensing information.
+
 ##### 1.3
 - New option alpha; limits the chooser to opaque colors, if set to false.
 
@@ -65,3 +68,6 @@ The script will output colors in the following order; Name, Hex, rgba.
 
 ### Additional Rescources
 - tinycolor.js by bgrins (<http://bgrins.github.com/TinyColor/>)
+
+### Licensing
+This plugin is Licensed under the GPL v2.0 ([http://www.gnu.org/licenses/gpl-2.0.html][]).
