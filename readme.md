@@ -8,6 +8,7 @@ After installation you can manually run the colorpicker by calling the function 
 - stylesheet : false, 'path/to/stylesheet.css' - **default: false**
 - callback : 'callback function' - **default: none**
 - alpha : boolean  - **default: true**
+- force_rgba : boolean, will force the output to always be RGBA - **default: false**
 
 For example to mimic the original version of this script you would manually call it like this:
 
@@ -27,6 +28,10 @@ The script will output colors in the following order; Name, Hex, rgba.
 - Stress Test, v1.1 <http://fatfolderdesign.com/ex/rgbaColorPicker/stresstest.html>
     
 ### Version History
+##### 1.4.1
+- Added `force_rgba` option
+- _Note:_ Seems there are numbers little issues with this in newer versions of chrome (and probably other browsers too). I no longer am using this in anything in production, so unless someone is using or someone wants to take the reigns the issues will probably remain until I need to put it into production again.
+
 ##### 1.3.1
 - Added licensing information.
 
